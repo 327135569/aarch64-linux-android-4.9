@@ -52,11 +52,7 @@ class CompilerWrapper():
     self.args = self.prepend_flags + self.args + self.append_flags
 
   def print_deprecation_warning(self):
-    print("Android GCC has been deprecated in favor of Clang, and will be removed from\n"
-          "Android in 2020-01 as per the deprecation plan in:\n"
-          "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/master/GCC_4_9_DEPRECATION.md\n\n",
-          file=sys.stderr)
-
+    pass
 
   def invoke_compiler(self):
     self.print_deprecation_warning()
@@ -65,7 +61,6 @@ class CompilerWrapper():
     self.process_gomacc_command()
     self.add_flags()
     self.execargs += [self.real_compiler] + self.args
-    time.sleep(3)
     os.execv(self.argv0, self.execargs)
 
 
